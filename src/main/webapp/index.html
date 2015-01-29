@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Product CRUD APP</title>
+	<link rel="stylesheet" type="text/css" href="static/css/themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="static/css/themes/icon.css">
+	<link rel="stylesheet" type="text/css" href="static/css/themes/color.css">
+	<link rel="stylesheet" type="text/css" href="static/css/demo/demo.css">
+	<link rel="stylesheet" type="text/css" href="static/css/product.css" />
+	<script type="text/javascript" src="static/js/jquery.min.js"></script>
+	<script type="text/javascript" src="static/js/jquery.easyui.min.js"></script>
+	<script type="text/javascript" src="static/js/product.js"></script>
+</head>
+
+<body>
+	<h2>Product CRUD Application</h2>
+	<p></p>
+	
+	<table id="dg" title="Products" class="easyui-datagrid" style="width:700px;height:250px"
+			url="http://localhost:8080/product/" method="GET"
+			toolbar="#toolbar" pagination="true"
+			rownumbers="true" fitColumns="true" singleSelect="true">
+		<thead>
+			<tr>
+				<th field="id" width="50">Id</th>
+				<th field="name" width="50">Name</th>
+				<th field="description" width="50">Description</th>
+				<th field="price" width="50">Price</th>
+			</tr>
+		</thead>
+	</table>
+	<div id="toolbar">
+		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="newProduct()">New Product</a>
+		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="editProduct()">Edit Product</a>
+		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="deleteProduct()">Remove Product</a>
+	</div>
+	
+	<div id="dlg" class="easyui-dialog" style="width:400px;height:280px;padding:10px 20px"
+			closed="true" buttons="#dlg-buttons">
+		<div class="ftitle">Product Information</div>
+		<form id="fm" method="post" novalidate>
+			<div class="fitem">
+				<label>Id:</label>
+				<input id="id" name="id" class="easyui-textbox" required="true">
+			</div>
+			<div class="fitem">
+				<label>Name:</label>
+				<input id="name" name="name" class="easyui-textbox" required="true">
+			</div>
+			<div class="fitem">
+				<label>Description:</label>
+				<input id="description" name="description" class="easyui-textbox">
+			</div>
+			<div class="fitem">
+				<label>Price:</label>
+				<input id="price" name="price" class="easyui-numberbox" data-options="min:0">
+			</div>
+		</form>
+	</div>
+	<div id="dlg-buttons">
+		<a href="javascript:void(0)" class="easyui-linkbutton c6" iconCls="icon-ok" onclick="saveProduct()" style="width:90px">Save</a>
+		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dlg').dialog('close')" style="width:90px">Cancel</a>
+	</div>
+</body>
+</html>
